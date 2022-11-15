@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <br>
+  <h1>
+    List of lots
+    <a href="{% url 'shop:lot-create' %}" class="btn btn-primary link-to-page" style="float: right">
+      Add new lot
+    </a>
+  </h1>
+    <br>
+
+    <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="Search">
+    </form>
+
+    <br>
+  {% if lot_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+      </tr>
+
+      {% for lot in lot_list %}
+        <tr>
+          <td>
+              {{ lot.id }}
+          </td>
+          <td>
+              <a href="{% url 'shop:lot-detail' pk=lot.id %}">{{ lot.name }}</a>
+          </td>
+          <td>
+              {% for title in lot.category.all %} {{ title }} {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no lots at the moment</p>
+  {% endif %}
+{% endblock %}

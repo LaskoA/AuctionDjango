@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <br>
+  <h1>
+      Detailed information about lot # {{ lot.id }}
+  </h1>
+    <hr>
+    <br>
+        <strong>Name:</strong> {{ lot.name }} <br>
+        <strong>Description:</strong> {{ lot.description }} <br>
+    <br>
+    <a href="{% url 'shop:lot-update' pk=lot.id %}" class="btn btn-primary" style="float:
+    left">
+      Update
+    </a>
+    <a href="{% url 'shop:lot-delete' pk=lot.id %}" class="btn btn-danger link-to-page" style="float:
+    right">
+      Delete
+    </a>
+    <br>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <br>
+  <h1>
+      Detailed information about category # {{ category.id }}
+  </h1>
+    <hr>
+    <br>
+        <strong>Title:</strong> {{ category.title }} <br>
+    <br>
+    <a href="{% url 'shop:category-update' pk=category.id %}" class="btn btn-primary" style="float:
+    left">
+      Update
+    </a>
+    <a href="{% url 'shop:category-delete' pk=category.id %}" class="btn btn-danger link-to-page" style="float:
+    right">
+      Delete
+    </a>
+    <br>
+
+{% endblock %}
